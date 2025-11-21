@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: llm-quiz-solver
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt && playwright install --with-deps chromium
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: STUDENT_EMAIL
+        sync: false
+      - key: STUDENT_SECRET
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        value: gpt-5-nano
+      - key: PYTHON_VERSION
+        value: 3.11.0
