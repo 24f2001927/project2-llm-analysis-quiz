@@ -5,4 +5,5 @@ python-dotenv
 openai 
 playwright 
 requests
-playwright install
+playwright 
+install
